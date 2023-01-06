@@ -22,11 +22,6 @@ namespace Business.Concrete
 
         public IResult Add(Customer entity)
         {
-            foreach (var item in _customerDal.GetAll())
-            {
-                if (item.Id == entity.Id)
-                    return new ErrorResult(Messages.IdInvalid);
-            }
             _customerDal.Add(entity);
             return new SuccessResult(Messages.CustomerAdded);
         }

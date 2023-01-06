@@ -20,12 +20,10 @@ namespace Business.Concrete
 
         public IResult Add(User entity)
         {
-            foreach(var item in _userDal.GetAll())
+            if(entity.FirstName.Length < 2)
             {
-                if(item.Id == entity.Id)
-                    return new ErrorResult(Messages.IdInvalid);
-            }  
-            
+                return new ErrorResult(Messages.UserNameInvalid);
+            }
             _userDal.Add(entity);
             return new SuccessResult(Messages.UserAdded);
         }

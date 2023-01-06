@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    internal class ColorManager : IColorService
+    public class ColorManager : IColorService
     {
         IColorDal _colorDal;
 
