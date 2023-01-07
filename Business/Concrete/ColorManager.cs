@@ -19,7 +19,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public IResult Add(Color entity)
+        public IResult Add(Colour entity)
         {
             foreach (var item in _colorDal.GetAll())
             {
@@ -30,23 +30,23 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorAdded);
         }
 
-        public IResult Delete(Color entity)
+        public IResult Delete(Colour entity)
         {
             _colorDal.Delete(entity);
             return new SuccessResult(Messages.ColorDeleted);
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<List<Colour>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.ColorListed);
+            return new SuccessDataResult<List<Colour>>(_colorDal.GetAll(), Messages.ColorListed);
         }
 
-        public IDataResult<Color> GetById(int id)
+        public IDataResult<Colour> GetById(int id)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(b => b.Id == id), Messages.ColorListed);
+            return new SuccessDataResult<Colour>(_colorDal.Get(b => b.Id == id), Messages.ColorListed);
         }
 
-        public IResult Update(Color entity)
+        public IResult Update(Colour entity)
         {
             _colorDal.Update(entity);
             return new SuccessResult(Messages.ColorUpdated);

@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 
 namespace WebAPI.Controllers
 {
@@ -39,9 +40,31 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Color color)
+        public IActionResult Add(Colour colour)
         {
-            var result = _colorService.Add(color);
+            var result = _colorService.Add(colour);
+            if (result.success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(Colour colour)
+        {
+            var result = _colorService.Update(colour);
+            if (result.success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Colour colour)
+        {
+            var result = _colorService.Delete(colour);
             if (result.success)
             {
                 return Ok(result);
